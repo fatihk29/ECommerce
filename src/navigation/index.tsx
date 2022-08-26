@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -16,8 +15,12 @@ import HomeScreen from '../view/screens/Home';
 import DealsScreen from '../view/screens/Deals';
 import BasketScreen from '../view/screens/Basket';
 import ProfileScreen from '../view/screens/Profile';
-import {HeaderMidTitle, HeaderRightTitle} from './HeaderComponents';
+import {
+  HeaderMidTitle,
+  HeaderRightTitle,
+} from '../view/components/NavigationHeader';
 import {ThemeContext} from '../../App';
+import styles from './style';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -25,7 +28,7 @@ const Drawer = createDrawerNavigator();
 
 const darkGrey = '#777';
 
-function MyTabs({navigation}) {
+function BottomTabNavigator({navigation}) {
   const theme = React.useContext(ThemeContext);
   return (
     <Tab.Navigator
@@ -124,7 +127,7 @@ function MyTabs({navigation}) {
   );
 }
 
-function DrawerNavigation() {
+function DrawerNavigator() {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
@@ -132,33 +135,15 @@ function DrawerNavigation() {
       drawerContent={(props) => <CustomDrawerContent {...props} />}>
       <Drawer.Screen
         name="DrawerNavigation"
-        component={MyTabs}
+        component={BottomTabNavigator}
         options={{headerShown: false}}
       />
     </Drawer.Navigator>
   );
 }
 
-const AppNavigator = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Stack"
-          component={DrawerNavigation}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
-
-export default AppNavigator;
-
 function CustomDrawerContent(props) {
   const theme = React.useContext(ThemeContext);
-
-  console.log('theme', theme);
   return (
     <DrawerContentScrollView {...props}>
       <TouchableOpacity
@@ -178,16 +163,18 @@ function CustomDrawerContent(props) {
   );
 }
 
-const styles = StyleSheet.create({
-  menuContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    height: 60,
-  },
-  themeText: {
-    fontSize: 18,
-    color: 'black',
-  },
-});
+const AppNavigator = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Stack"
+          component={DrawerNavigator}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default AppNavigator;

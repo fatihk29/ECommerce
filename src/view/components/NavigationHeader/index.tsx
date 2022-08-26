@@ -1,6 +1,8 @@
 import React from 'react';
-import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity, View, Text} from 'react-native';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import style from './styles';
 
 export const HeaderRightTitle = ({navigation, theme}) => {
   return (
@@ -24,25 +26,3 @@ export const HeaderMidTitle = ({title, theme}) => {
     </View>
   );
 };
-
-const style = StyleSheet.create({
-  midHeader: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  midHeaderText: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#555',
-  },
-  rightHeader: {
-    paddingRight: 10,
-    color: 'red',
-  },
-  leftHeaderText: {
-    marginLeft: 3,
-    color: '#6495ED',
-  },
-});
