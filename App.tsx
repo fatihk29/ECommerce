@@ -22,7 +22,7 @@ import AppNavigator from './src/navigation';
 
 const themes = {
   light: {backgroundColor: '#fff', color: '#000'},
-  dark: {backgroundColor: '#000', color: '#fff'},
+  dark: {backgroundColor: '#202020', color: '#fff'},
 };
 
 export const ThemeContext = React.createContext<any>(null);

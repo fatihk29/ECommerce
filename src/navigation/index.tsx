@@ -26,6 +26,7 @@ const Drawer = createDrawerNavigator();
 const darkGrey = '#777';
 
 function MyTabs({navigation}) {
+  const theme = React.useContext(ThemeContext);
   return (
     <Tab.Navigator
       screenOptions={() => ({
@@ -48,9 +49,13 @@ function MyTabs({navigation}) {
               />
             );
           },
-          headerLeft: () => <View />,
-          headerTitle: () => <HeaderMidTitle title={'Deals'} />,
-          headerRight: () => <HeaderRightTitle navigation={navigation} />,
+          headerStyle: {
+            backgroundColor: theme.theme.backgroundColor,
+          },
+          headerTitle: () => <HeaderMidTitle title={'Deals'} theme={theme} />,
+          headerRight: () => (
+            <HeaderRightTitle navigation={navigation} theme={theme} />
+          ),
         }}
       />
       <Tab.Screen
@@ -64,9 +69,15 @@ function MyTabs({navigation}) {
               color={item.focused ? item.color : darkGrey}
             />
           ),
-          headerLeft: () => <View />,
-          headerTitle: () => <HeaderMidTitle title={'Hottest Deals'} />,
-          headerRight: () => <HeaderRightTitle navigation={navigation} />,
+          headerStyle: {
+            backgroundColor: theme.theme.backgroundColor,
+          },
+          headerTitle: () => (
+            <HeaderMidTitle title={'Hottest Deals'} theme={theme} />
+          ),
+          headerRight: () => (
+            <HeaderRightTitle navigation={navigation} theme={theme} />
+          ),
         }}
       />
       <Tab.Screen
@@ -80,9 +91,13 @@ function MyTabs({navigation}) {
               color={item.focused ? item.color : darkGrey}
             />
           ),
-          headerLeft: () => <View />,
-          headerTitle: () => <HeaderMidTitle title={'Basket'} />,
-          headerRight: () => <HeaderRightTitle navigation={navigation} />,
+          headerStyle: {
+            backgroundColor: theme.theme.backgroundColor,
+          },
+          headerTitle: () => <HeaderMidTitle title={'Basket'} theme={theme} />,
+          headerRight: () => (
+            <HeaderRightTitle navigation={navigation} theme={theme} />
+          ),
         }}
       />
       <Tab.Screen
@@ -96,9 +111,13 @@ function MyTabs({navigation}) {
               color={item.focused ? item.color : darkGrey}
             />
           ),
-          headerLeft: () => <View />,
-          headerTitle: () => <HeaderMidTitle title={'Profile'} />,
-          headerRight: () => <HeaderRightTitle navigation={navigation} />,
+          headerStyle: {
+            backgroundColor: theme.theme.backgroundColor,
+          },
+          headerTitle: () => <HeaderMidTitle title={'Profile'} theme={theme} />,
+          headerRight: () => (
+            <HeaderRightTitle navigation={navigation} theme={theme} />
+          ),
         }}
       />
     </Tab.Navigator>
