@@ -10,7 +10,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
-  DrawerItem,
 } from '@react-navigation/drawer';
 
 import HomeScreen from '../view/screens/Home';
