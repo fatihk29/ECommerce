@@ -15,6 +15,8 @@ import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
+import {Provider} from 'react-redux';
+import store from './src/store';
 
 import AppNavigator from './src/navigation';
 
@@ -37,10 +39,12 @@ const App = () => {
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <ThemeContext.Provider value={providerValue}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <AppNavigator />
-      </ThemeContext.Provider>
+      <Provider store={store}>
+        <ThemeContext.Provider value={providerValue}>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <AppNavigator />
+        </ThemeContext.Provider>
+      </Provider>
     </SafeAreaProvider>
   );
 };
