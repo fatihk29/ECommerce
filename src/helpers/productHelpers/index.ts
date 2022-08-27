@@ -9,6 +9,11 @@ export const productHelpers = {
       return {...item, ...products.find((p) => p.id == item.productId)};
     });
   },
+  productIDSortedByTime: (products: any[], productID: any[]) => {
+    return productID.reverse().map((item) => {
+      return {...item, ...products.find((p) => p.id == item.productId)};
+    });
+  },
 };
 // [
 //   {

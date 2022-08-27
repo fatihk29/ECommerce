@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import {ThemeContext} from '../../../../App';
 import {productHelpers} from '../../../helpers/productHelpers';
 import store from '../../../store';
-import {userActions, productsSelectors} from '../../../store/productSlices';
+import {productActions, productsSelectors} from '../../../store/productSlices';
 import styles from './styles';
 
 const renderItem = ({item: {item}, theme}) => {
@@ -37,24 +37,25 @@ const renderItem = ({item: {item}, theme}) => {
 const HomeScreen = () => {
   const data = useSelector(productsSelectors.products);
   const pTs = useSelector(productsSelectors.productTimings);
+  const hotdeals = useSelector(productsSelectors.hotdeals);
   const theme = React.useContext(ThemeContext);
 
   const getProductsData = useCallback(() => {
-    store.dispatch(userActions.getProductsAT());
-    store.dispatch(userActions.getProductsTimingAT());
+    store.dispatch(productActions.getProductsAT());
+    store.dispatch(productActions.getProductsTimingAT());
+    store.dispatch(productActions.getHotDealsAT());
   }, [store]);
 
   useEffect(() => {
     getProductsData();
   }, [getProductsData]);
 
-  // const fakedata = useSelector((s) => s.ecom.productTimings.data);
-  // console.log('pTs', pTs);
+  console.log('hotdeals', hotdeals);
 
   useEffect(() => {
     if (data?.data && pTs?.data) {
-      const first = productHelpers.productsSortedByTime(data.data, pTs.data);
-      console.log('first', first)
+      productHelpers.productsSortedByTime(data.data, pTs.data);
+      // console.log('first', first)
     }
   }, [data.data, pTs.data]);
 
