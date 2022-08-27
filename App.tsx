@@ -19,23 +19,24 @@ import {Provider} from 'react-redux';
 import store from './src/store';
 
 import AppNavigator from './src/navigation';
+import {ITheme, IThemeType} from './src/types';
 
 const themes = {
   light: {backgroundColor: '#fff', color: '#000'},
   dark: {backgroundColor: '#202020', color: '#fff'},
 };
 
-export const ThemeContext = React.createContext<any>(null);
+export const ThemeContext = React.createContext<ITheme | any>(null);
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [theme, setTheme] = React.useState('light');
-
-  const providerValue = {theme: themes[theme], toggleTheme, themeType: theme};
+  const [theme, setTheme] = React.useState<IThemeType>('light');
 
   function toggleTheme() {
     return setTheme(theme === 'light' ? 'dark' : 'light');
   }
+
+  const providerValue = {theme: themes[theme], toggleTheme, themeType: theme};
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>

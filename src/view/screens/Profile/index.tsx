@@ -1,15 +1,20 @@
 import React from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import {Text, View} from 'react-native';
 
+import {ThemeContext} from '../../../../App';
 import styles from './styles';
 
 const ProfileScreen = () => {
+  const theme = React.useContext(ThemeContext);
   return (
-    <View>
-      <Text>PROFILE SCREEN</Text>
-      <TouchableOpacity onPress={() => {}}>
-        <Text>ss</Text>
-      </TouchableOpacity>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: theme.theme.backgroundColor},
+      ]}>
+      <Text style={[styles.profileText, {color: theme.theme.color}]}>
+        Name Surname
+      </Text>
     </View>
   );
 };

@@ -1,10 +1,23 @@
 import React from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {ITheme} from '../../../types'
 import style from './styles';
 
-export const HeaderRightTitle = ({navigation, theme}) => {
+interface IHeaderRightTitle {
+  navigation: any;
+  theme: ITheme;
+}
+
+interface IHeaderMidTitle {
+  title: string;
+  theme: ITheme;
+}
+
+export const HeaderRightTitle: React.FC<IHeaderRightTitle> = ({
+  navigation,
+  theme,
+}) => {
   return (
     <TouchableOpacity
       style={[style.rightHeader, {}]}
@@ -16,7 +29,7 @@ export const HeaderRightTitle = ({navigation, theme}) => {
   );
 };
 
-export const HeaderMidTitle = ({title, theme}) => {
+export const HeaderMidTitle: React.FC<IHeaderMidTitle> = ({title, theme}) => {
   return (
     <View
       style={[style.midHeader, {backgroundColor: theme.theme.backgroundColor}]}>

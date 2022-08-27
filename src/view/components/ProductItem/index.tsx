@@ -6,22 +6,23 @@ import {
   addProductToBasket,
   deleteProductFromBasket,
 } from '../../../store/basketSlice';
+import {ITheme} from '../../../types';
 import styles from './styles';
 
-const ProductItem = ({item: {item}, theme}) => {
+interface IProductItem {
+  item: any;
+  theme: ITheme;
+}
+
+const ProductItem: React.FC<IProductItem> = ({item: {item}, theme}) => {
   return (
     <TouchableOpacity
-      style={styles.item}
+      style={styles.itemContainer}
       onPress={() => {
         store.dispatch(addProductToBasket(item));
       }}>
       <Image style={styles.tinyLogo} source={{uri: item.image}} />
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-        }}>
+      <View style={styles.textContainer}>
         <Text style={[styles.discount, {color: theme.theme.color}]}>
           {item.discount}
           {'%OFF'}

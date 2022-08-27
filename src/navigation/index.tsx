@@ -20,6 +20,7 @@ import {
   HeaderRightTitle,
 } from '../view/components/NavigationHeader';
 import {ThemeContext} from '../../App';
+import {ITheme} from '../types';
 import styles from './style';
 
 const Tab = createBottomTabNavigator();
@@ -149,7 +150,7 @@ function DrawerNavigator() {
 }
 
 function CustomDrawerContent(props: any) {
-  const theme = React.useContext(ThemeContext);
+  const theme = React.useContext<ITheme>(ThemeContext);
 
   return (
     <DrawerContentScrollView {...props}>

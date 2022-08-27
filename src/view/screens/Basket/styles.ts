@@ -1,31 +1,18 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const windowHeight = Dimensions.get('window').height;
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
   },
-  item: {
-    marginVertical: 12,
-    marginHorizontal: 12,
+  emptyBasketContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
-  discount: {},
-  name: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  price: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black',
-  },
-
-  tinyLogo: {
-    width: '100%',
-    height: windowHeight * 0.22,
-    borderRadius: 15,
+  emptyBasketText: {
+    marginTop: 10,
+    fontSize: 22,
   },
 });
 

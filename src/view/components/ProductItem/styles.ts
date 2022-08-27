@@ -3,11 +3,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  item: {
+  itemContainer: {
     marginVertical: 12,
     marginHorizontal: 12,
   },
@@ -21,12 +17,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
-
   tinyLogo: {
     width: '100%',
     height: windowHeight * 0.22,
     borderRadius: 15,
   },
+  textContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  }
 });
 
 export default styles;
