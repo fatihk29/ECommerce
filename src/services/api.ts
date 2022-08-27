@@ -14,20 +14,20 @@ axiosClient.interceptors.request.use(
     return configs;
   },
   (error) => {
-    console.log('request Error:', error);
+    // console.log('request Error:', error);
   },
 );
 
 axiosClient.interceptors.response.use(
   (configs) => {
     if (configs.status !== 200 && configs.status !== 201) {
-      console.log('Server Api:', configs.status);
+      // console.log('Server Api:', configs.status);
     }
     return configs;
   },
   (error) => {
     if (error.status !== 200 && error.status !== 201) {
-      console.log('Server Api:', error);
+      // console.log('Server Api:', error);
     }
     return error;
   },

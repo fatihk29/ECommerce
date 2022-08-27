@@ -8,7 +8,8 @@ const endPoints = {
 export const getProducts = async (): Promise<any> => {
   try {
     const response = await axiosClient.get(endPoints.products);
-    if (response?.data?.token) {
+    // console.log('response', response?.data)
+    if (response?.data) {
       return Promise.resolve(response.data);
     } else {
       return Promise.reject(response?.data);

@@ -6,7 +6,7 @@ import {SABIT, productTiming} from './const';
 import {ThemeContext} from '../../../../App';
 
 const renderItem = ({item: {item}, theme}) => {
-  console.log('item', item);
+  // console.log('item', item);
   return (
     <View style={styles.item}>
       <Image style={styles.tinyLogo} source={{uri: item.image}} />
