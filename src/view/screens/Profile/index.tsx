@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
-import {addMuffin, deleteMuffin} from '../../../store/muffinSlice';
+import {useSelector} from 'react-redux';
 import {userActions, productsSelectors} from '../../../store/productSlices';
 
 import store from '../../../store';
@@ -15,7 +14,6 @@ const ProfileScreen = () => {
     store.dispatch(userActions.getProductsAT());
   };
 
-  console.log('muffinList', muffinList);
   return (
     <View>
       <Text>PROFILE SCREEN</Text>

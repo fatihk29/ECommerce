@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, Switch, View} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -144,21 +144,19 @@ function DrawerNavigator() {
 
 function CustomDrawerContent(props) {
   const theme = React.useContext(ThemeContext);
+
   return (
     <DrawerContentScrollView {...props}>
-      <TouchableOpacity
-        style={[
-          styles.menuContainer,
-          {backgroundColor: theme.theme.backgroundColor},
-        ]}
-        onPress={() => {
-          theme.toggleTheme();
-        }}>
-        <MCI name="theme-light-dark" size={30} color={darkGrey} />
-        <Text style={[styles.themeText, {color: theme.theme.color}]}>
-          {theme.themeType === 'dark' ? 'Dark Theme' : 'Light Theme'}
-        </Text>
-      </TouchableOpacity>
+      <View style={[styles.menuContainer]}>
+        <MCI name="weather-night" size={35} color={darkGrey} />
+        <Switch
+          trackColor={{false: '#767577', true: '#81b0ff'}}
+          thumbColor={theme.themeType === 'dark' ? '#f5dd4b' : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={theme.toggleTheme}
+          value={theme.themeType === 'dark' ? true : false}
+        />
+      </View>
     </DrawerContentScrollView>
   );
 }
