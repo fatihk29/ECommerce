@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Switch, View} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -29,8 +29,8 @@ const Drawer = createDrawerNavigator();
 
 const darkGrey = '#777';
 
-function BottomTabNavigator({navigation}) {
-  const theme = React.useContext(ThemeContext);
+const BottomTabNavigator: FC<any> = ({navigation}) => {
+  const theme = React.useContext<ITheme>(ThemeContext);
   return (
     <Tab.Navigator
       screenOptions={() => ({
@@ -126,9 +126,9 @@ function BottomTabNavigator({navigation}) {
       />
     </Tab.Navigator>
   );
-}
+};
 
-function DrawerNavigator() {
+const DrawerNavigator: FC = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
@@ -147,9 +147,9 @@ function DrawerNavigator() {
       />
     </Drawer.Navigator>
   );
-}
+};
 
-function CustomDrawerContent(props: any) {
+const CustomDrawerContent: FC<any> = (props) => {
   const theme = React.useContext<ITheme>(ThemeContext);
 
   return (
@@ -166,9 +166,9 @@ function CustomDrawerContent(props: any) {
       </View>
     </DrawerContentScrollView>
   );
-}
+};
 
-const AppNavigator = () => {
+const AppNavigator: FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>

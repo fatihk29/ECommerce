@@ -9,15 +9,14 @@
  */
 
 import React from 'react';
-import {StatusBar, useColorScheme} from 'react-native';
-
+import {StatusBar} from 'react-native';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
-import store from './src/store';
 
+import store from './src/store';
 import AppNavigator from './src/navigation';
 import {ITheme, IThemeType} from './src/types';
 
@@ -26,23 +25,30 @@ const themes = {
   dark: {backgroundColor: '#202020', color: '#fff'},
 };
 
-export const ThemeContext = React.createContext<ITheme | any>(null);
+export const ThemeContext = React.createContext<ITheme>({
+  theme: themes.light,
+  themeType: 'light',
+  toggleTheme: () => {},
+});
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-  const [theme, setTheme] = React.useState<IThemeType>('light');
+  const [themeType, setThemeType] = React.useState<IThemeType>('light');
 
   function toggleTheme() {
-    return setTheme(theme === 'light' ? 'dark' : 'light');
+    return setThemeType(themeType === 'light' ? 'dark' : 'light');
   }
 
-  const providerValue = {theme: themes[theme], toggleTheme, themeType: theme};
+  const providerValue = {
+    theme: themes[themeType],
+    toggleTheme,
+    themeType: themeType,
+  };
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <Provider store={store}>
         <ThemeContext.Provider value={providerValue}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <StatusBar barStyle={`${themeType}-content`} />
           <AppNavigator />
         </ThemeContext.Provider>
       </Provider>

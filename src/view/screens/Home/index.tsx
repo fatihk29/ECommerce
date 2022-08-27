@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {FC, useEffect, useCallback} from 'react';
 import {SafeAreaView, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 
@@ -6,14 +6,15 @@ import {ThemeContext} from '../../../../App';
 import {productHelpers} from '../../../helpers/productHelpers';
 import store from '../../../store';
 import {productActions, productsSelectors} from '../../../store/productSlices';
-import styles from './styles';
 import ProductItem from '../../components/ProductItem';
+import {ITheme} from '../../../types';
+import styles from './styles';
 
-const HomeScreen = () => {
+const HomeScreen: FC = () => {
+  const theme = React.useContext<ITheme>(ThemeContext);
   const data = useSelector(productsSelectors.products);
   const pTs = useSelector(productsSelectors.productTimings);
   const hotdeals = useSelector(productsSelectors.hotdeals);
-  const theme = React.useContext(ThemeContext);
 
   const getProductsData = useCallback(() => {
     store.dispatch(productActions.getProductsAT());
@@ -24,7 +25,6 @@ const HomeScreen = () => {
   useEffect(() => {
     getProductsData();
   }, [getProductsData]);
-
 
   const list = useSelector((state: any) => state.basket);
 

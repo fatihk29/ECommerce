@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {SafeAreaView, View, FlatList, Text, Image} from 'react-native';
 
 import {ITheme} from '../../../types';
 import {ThemeContext} from '../../../../App';
 import styles from './styles';
 
-const DealsScreen = () => {
+const DealsScreen: FC = () => {
   const theme = React.useContext<ITheme>(ThemeContext);
   return (
     <SafeAreaView

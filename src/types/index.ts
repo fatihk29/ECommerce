@@ -1,5 +1,8 @@
 export interface ITheme {
-  theme: {backgroundColor: string; color: string};
+  theme: {
+    backgroundColor: string;
+    color: string;
+  };
   themeType: IThemeType;
   toggleTheme: () => void;
 }

@@ -1,26 +1,26 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {SafeAreaView, FlatList, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import ProductItem from '../../components/ProductItem';
 import {ThemeContext} from '../../../../App';
-import {ITheme} from '../../../types'
+import {ITheme} from '../../../types';
 import styles from './styles';
 
-const BasketScreen = () => {
+const BasketScreen: FC = () => {
   const theme = React.useContext<ITheme>(ThemeContext);
-  const list = useSelector((state: any) => state.basket);
+  const basket = useSelector((state: any) => state.basket);
 
-  console.log('list', list);
+  console.log('basket', basket);
   return (
     <SafeAreaView
       style={[
         styles.container,
         {backgroundColor: theme.theme.backgroundColor},
       ]}>
-      {list?.length > 0 ? (
+      {basket?.length > 0 ? (
         <FlatList
-          data={list}
+          data={basket}
           renderItem={(item) => ProductItem({item, theme})}
           keyExtractor={(item) => item.id}
         />
