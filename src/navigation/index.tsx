@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text, Switch, View} from 'react-native';
+import {Switch, View} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -131,8 +131,14 @@ function DrawerNavigator() {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      screenOptions={{drawerPosition: 'right'}}
-      drawerContent={(props) => <CustomDrawerContent {...props} />}>
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        drawerPosition: 'right',
+        drawerStyle: {
+          backgroundColor: '#c6cbef',
+          width: 200,
+        },
+      }}>
       <Drawer.Screen
         name="DrawerNavigation"
         component={BottomTabNavigator}
@@ -142,7 +148,7 @@ function DrawerNavigator() {
   );
 }
 
-function CustomDrawerContent(props) {
+function CustomDrawerContent(props: any) {
   const theme = React.useContext(ThemeContext);
 
   return (
