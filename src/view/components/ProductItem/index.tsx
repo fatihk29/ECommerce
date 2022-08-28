@@ -12,15 +12,29 @@ import styles from './styles';
 interface IProductItem {
   item: any;
   theme: ITheme;
+  basketProducts?: any;
 }
 
-const ProductItem: React.FC<IProductItem> = ({item: {item}, theme}) => {
+const ProductItem: React.FC<IProductItem> = ({
+  item: {item},
+  theme,
+  basketProducts,
+}) => {
+
   return (
     <TouchableOpacity
       style={styles.itemContainer}
       onPress={() => {
         store.dispatch(addProductToBasket(item));
       }}>
+      {basketProducts?.length > 0 &&
+        basketProducts?.find((b: any) => {
+          return b.id === item.id;
+        }) && (
+          <Text style={[styles.discount, {color: theme.theme.color}]}>
+            In basket
+          </Text>
+        )}
       <Image style={styles.tinyLogo} source={{uri: item.image}} />
       <View style={styles.textContainer}>
         <Text style={[styles.discount, {color: theme.theme.color}]}>

@@ -26,9 +26,9 @@ const HomeScreen: FC = () => {
     getProductsData();
   }, [getProductsData]);
 
-  const list = useSelector((state: any) => state.basket);
+  const basketProducts = useSelector((state: any) => state.basket);
 
-  console.log('list', list);
+  // console.log('list', basketProducts);
 
   useEffect(() => {
     if (data?.data && pTs?.data) {
@@ -45,7 +45,7 @@ const HomeScreen: FC = () => {
       ]}>
       <FlatList
         data={data?.data}
-        renderItem={(item) => ProductItem({item, theme})}
+        renderItem={(item) => ProductItem({item, theme, basketProducts})}
         keyExtractor={(item) => item.id}
       />
     </SafeAreaView>

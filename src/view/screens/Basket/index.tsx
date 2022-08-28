@@ -9,18 +9,18 @@ import styles from './styles';
 
 const BasketScreen: FC = () => {
   const theme = React.useContext<ITheme>(ThemeContext);
-  const basket = useSelector((state: any) => state.basket);
+  const basketProducts = useSelector((state: any) => state.basket);
 
-  console.log('basket', basket);
+  console.log('basket', basketProducts);
   return (
     <SafeAreaView
       style={[
         styles.container,
         {backgroundColor: theme.theme.backgroundColor},
       ]}>
-      {basket?.length > 0 ? (
+      {basketProducts?.length > 0 ? (
         <FlatList
-          data={basket}
+          data={basketProducts}
           renderItem={(item) => ProductItem({item, theme})}
           keyExtractor={(item) => item.id}
         />
