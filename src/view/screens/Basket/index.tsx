@@ -11,7 +11,6 @@ const BasketScreen: FC = () => {
   const theme = React.useContext<ITheme>(ThemeContext);
   const basketProducts = useSelector((state: any) => state.basket);
 
-  console.log('basket', basketProducts);
   return (
     <SafeAreaView
       style={[
