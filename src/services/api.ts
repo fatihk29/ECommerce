@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-const baseUrl = 'http://5e394071aad22200149625f8.mockapi.io/';
+const baseUrl = 'http://5e394071aad22200149625f8.mockapi.io';
 
 const axiosClient = axios.create({
   baseURL: baseUrl,

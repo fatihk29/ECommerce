@@ -68,7 +68,7 @@ const getHotDealsAT = createAsyncThunk('ecom/hotdeals', async (_, thunkAPI) => {
     if (response) {
       return response;
     } else {
-      return thunkAPI.rejectWithValue('no product timing');
+      return thunkAPI.rejectWithValue('no hotdeal');
     }
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -80,7 +80,7 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // products
+    // products start
     builder.addCase(getProductsAT.pending, (state, _) => {
       state.products.pending = true;
       state.products.data = null;
@@ -96,7 +96,8 @@ export const productsSlice = createSlice({
       state.products.data = null;
       state.products.pending = false;
     });
-    // productTimings
+    // products end
+    // productTimings start
     builder.addCase(getProductsTimingAT.pending, (state, _) => {
       state.productTimings.pending = true;
       state.productTimings.data = null;
@@ -112,7 +113,8 @@ export const productsSlice = createSlice({
       state.productTimings.data = null;
       state.productTimings.pending = false;
     });
-    // hotdeals
+    // productTimings end
+    // hotdeals start
     builder.addCase(getHotDealsAT.pending, (state, _) => {
       state.hotdeals.pending = true;
       state.hotdeals.data = null;
@@ -128,6 +130,7 @@ export const productsSlice = createSlice({
       state.hotdeals.data = null;
       state.hotdeals.pending = false;
     });
+    // hotdeals end
   },
 });
 

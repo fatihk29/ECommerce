@@ -1,9 +1,9 @@
 import axiosClient from './api';
 
 const endPoints = {
-  products: 'products',
-  productTimings: 'productTimings',
-  hotdeals: 'hotdeals',
+  products: '/products',
+  productTimings: '/productTimings',
+  hotdeals: '/hotdeals',
 };
 
 // '/products'
