@@ -10,6 +10,7 @@ import {
   createDrawerNavigator,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import HomeScreen from '../view/screens/Home';
 import DealsScreen from '../view/screens/Deals';

@@ -15,7 +15,10 @@ import {
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
-
+import {
+  saveDataToStorage,
+  readDataFromStorage,
+} from './src/helpers/asyncstorage';
 import store from './src/store';
 import AppNavigator from './src/navigation';
 import {ITheme, IThemeType} from './src/types';
@@ -34,7 +37,7 @@ export const ThemeContext = React.createContext<ITheme>({
 const App = () => {
   const [themeType, setThemeType] = React.useState<IThemeType>('light');
 
-  function toggleTheme() {
+  async function toggleTheme() {
     return setThemeType(themeType === 'light' ? 'dark' : 'light');
   }
 
@@ -43,6 +46,21 @@ const App = () => {
     toggleTheme,
     themeType: themeType,
   };
+
+  const storage = async () => {
+    let val = await readDataFromStorage();
+    if (val) {
+      setThemeType(val);
+    }
+  };
+
+  React.useEffect(() => {
+    storage();
+  }, []);
+
+  React.useEffect(() => {
+    saveDataToStorage(themeType);
+  }, [themeType]);
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
